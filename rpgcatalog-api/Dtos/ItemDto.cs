@@ -1,6 +1,6 @@
-﻿namespace rpgcatalog_api.Entities
+﻿namespace rpgcatalog_api.Dtos
 {
-    public record Item
+    public record ItemDto
     {
         public Guid? Id { get; init; }
         public string? Name { get; init; }

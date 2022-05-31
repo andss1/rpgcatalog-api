@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using rpgcatalog_api.Dtos;
 using rpgcatalog_api.Entities;
 using rpgcatalog_api.Repositories;
+using rpgcatalog_api.Repositories.Interfaces;
 
 namespace rpgcatalog_api.Controllers
 {
@@ -8,26 +10,30 @@ namespace rpgcatalog_api.Controllers
     [Route("[controller]")]
     public class ItemsController: ControllerBase
     {
-        private readonly InMemRepository repository;
+        private readonly IItemRepository repository;
 
-        public ItemsController()
+        public ItemsController(IItemRepository repository)
         {
-            repository = new InMemRepository();
+            this.repository = repository;
         }
 
         //GET /Items
         [HttpGet]
-        public IEnumerable<Item> GetItems()
+        public IEnumerable<ItemDto> GetItems()
         {
-            var items = repository.GetItems();
-            return items;
+            return repository.GetItems().Select(item => item.AsDto());
         }
 
         //GET /Items{id}
         [HttpGet("{id}")]
-        public Item GetItem(Guid id)
+        public ActionResult<ItemDto> GetItem(Guid id)
         {
-            return repository.GetItem(id);
+            var item = repository.GetItem(id);
+
+            if (item is null)
+                return NotFound();
+
+            return item.AsDto();
         }
     }
 }

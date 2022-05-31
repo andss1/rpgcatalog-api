@@ -1,9 +1,10 @@
 ﻿using rpgcatalog_api.Entities;
+using rpgcatalog_api.Repositories.Interfaces;
 using System.Linq;
 
 namespace rpgcatalog_api.Repositories
 {
-    public class InMemRepository
+    public class InMemRepository: IItemRepository
     {
         private readonly List<Item> items = new()
         {
