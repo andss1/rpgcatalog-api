@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "2MUrQ69HozgHFmSRz3OpEi5EYZYYJ9YPAcNPda0TIpo=",
+  "Source": "rpgcatalog-api",
+  "BasePath": "_content/rpgcatalog-api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
