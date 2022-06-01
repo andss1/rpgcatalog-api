@@ -33,5 +33,11 @@ namespace rpgcatalog_api.Repositories
             var idx = items.FindIndex(existingItem => existingItem.Id == item.Id);
             items[idx] = item;
         }
+
+        public void DeleteItem(Guid id)
+        {
+            var idx = items.FindIndex(existingItem => existingItem.Id == id);
+            items.RemoveAt(idx);
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace rpgcatalog_api.Repositories.Interfaces
 
         void CreateItem(Item item);
         void UpdateItem(Item item);
+        void DeleteItem(Guid id);
     }
 }
