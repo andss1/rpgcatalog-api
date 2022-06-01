@@ -27,5 +27,11 @@ namespace rpgcatalog_api.Repositories
         {
             items.Add(item);
         }
+
+        public void UpdateItem(Item item)
+        {
+            var idx = items.FindIndex(existingItem => existingItem.Id == item.Id);
+            items[idx] = item;
+        }
     }
 }
