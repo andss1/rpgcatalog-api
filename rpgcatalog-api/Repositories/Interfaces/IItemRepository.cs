@@ -6,5 +6,7 @@ namespace rpgcatalog_api.Repositories.Interfaces
     {
         Item GetItem(Guid id);
         IEnumerable<Item> GetItems();
+
+        void CreateItem(Item item);
     }
 }

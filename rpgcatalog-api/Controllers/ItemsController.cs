@@ -35,5 +35,22 @@ namespace rpgcatalog_api.Controllers
 
             return item.AsDto();
         }
+
+        //POST /items
+        [HttpPost]
+        public ActionResult<ItemDto> CreateItem(CreateItemDto itemDto)
+        {
+            Item item = new()
+            {
+                Id = Guid.NewGuid(),
+                Name = itemDto.Name,
+                Price = itemDto.Price,
+                CreateDate = DateTimeOffset.UtcNow
+            };
+
+            repository.CreateItem(item);
+
+            return CreatedAtAction(nameof(GetItem), new {id = item.Id}, item.AsDto());
+        }
     }
 }
